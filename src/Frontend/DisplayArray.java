@@ -71,7 +71,7 @@ public class DisplayArray {
         for (Kurs kurs : lista) {
             textArea.append(kurs.getNazwaKursu() + " " + kurs.getLiczbaECTS() + " ECTS, Prowadzący: " + kurs.getProwadzacy().getImie() + " " + kurs.getProwadzacy().getNazwisko() + "\n");
         }
-        JButton deleteButton = new JButton("Usuń wyszukanych kursów");
+        JButton deleteButton = new JButton("Usuń wyszukane kursy");
         mainFrame.getContentPane().add(deleteButton);
         deleteButton.addActionListener(e -> Backend.Uczelnia.Main.getKursy().removeAll(wyniki));
     }
