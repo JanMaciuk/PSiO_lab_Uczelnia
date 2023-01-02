@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import Backend.Uczelnia.*;
 
 public class MainWindow  {
-    public static int width = 280;
-    public static int height = 170;
+    public static int width = 300;
+    public static int height = 200;
 
     public static void main(String[] args) {
         Backend.Uczelnia.Main.deserializujWszystko();
@@ -18,20 +18,17 @@ public class MainWindow  {
         JFrame mainFrame = new JFrame("Menu główne");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JButton button1 = new JButton("   Dodawanie   ");
+        JButton button1 = new JButton("Dodawanie");
         JButton button2 = new JButton("Wyszukiwanie");
-        JButton button3 = new JButton("    Usuwanie    ");
-        JButton button4 = new JButton("        Wyjdź        ");
+        JButton button4 = new JButton("Wyjdź");
 
-        mainFrame.getContentPane().setLayout(new GridLayout(4, 1));
+        mainFrame.getContentPane().setLayout(new GridLayout(3, 1));
         mainFrame.getContentPane().add(button1);
         mainFrame.getContentPane().add(button2);
-        mainFrame.getContentPane().add(button3);
         mainFrame.getContentPane().add(button4);
 
         button1.addActionListener(e -> DodawanieWindow());
         button2.addActionListener(e -> WyszukiwanieWindow());
-        button3.addActionListener(e -> UsuwanieWindow());
         button4.addActionListener(e -> System.exit(1));
 
         mainFrame.setSize(width, height);
@@ -61,7 +58,7 @@ public class MainWindow  {
 
         mainFrame.setSize(width, height);
         mainFrame.setVisible(true);
-    }a
+    }
 
     public static void WyszukiwanieWindow() {
         JFrame mainFrame = new JFrame("Wyszukiwanie");
@@ -90,29 +87,7 @@ public class MainWindow  {
         mainFrame.setSize(width, height);
         mainFrame.setVisible(true);
     }
-    public static void UsuwanieWindow() {
-            JFrame mainFrame = new JFrame("Usuwanie");
-            mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-            JButton button1 = new JButton("    Usuń Naukowca    ");
-            JButton button2 = new JButton("Usuń Administratora");
-            JButton button3 = new JButton("     Usuń Studenta     ");
-            JButton button4 = new JButton("         Usuń Kurs         ");
-
-            mainFrame.getContentPane().setLayout(new GridLayout(4, 1));
-            mainFrame.getContentPane().add(button1);
-            mainFrame.getContentPane().add(button2);
-            mainFrame.getContentPane().add(button3);
-            mainFrame.getContentPane().add(button4);
-
-            button1.addActionListener(e -> UsuwanieMenu.usunNaukowca());
-            button2.addActionListener(e -> UsuwanieMenu.usunAdministratora());
-            button3.addActionListener(e -> UsuwanieMenu.usunStudenta());
-            button4.addActionListener(e -> UsuwanieMenu.usunKurs());
-
-            mainFrame.setSize(width, height);
-            mainFrame.setVisible(true);
-        }
 
 }
 

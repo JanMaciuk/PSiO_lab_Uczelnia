@@ -30,13 +30,14 @@ public class DisplayArray {
         for (PracownikAdministracyjny admin : lista) {
             textArea.append(admin.getImie() + " " + admin.getNazwisko() + ", " + admin.getPesel() + ", " + admin.getStanowisko() + ", Staż: " + admin.getStazPracy() + " miesięcy, " + admin.getPensja() + ", " + admin.getWiek() + ", " + admin.getJedzenie() + ", " + admin.getPlec() + ", " + admin.getLiczbaNadgodzin() + " nadgodzin \n");
         }
-        JButton deleteButton = new JButton("Usuń wyszukanych pracowników");
+        JButton deleteButton = new JButton("Usuń wyszukanych administratorów");
         mainFrame.getContentPane().add(deleteButton);
         deleteButton.addActionListener(e -> Backend.Uczelnia.Main.getAdministratorzy().removeAll(wyniki));
 
 
     }
     public static void displayNaukowiec(ArrayList<PracownikBadawczoDydaktyczny> lista) {
+        ArrayList<PracownikBadawczoDydaktyczny> wyniki = new ArrayList<>(lista);
         textArea.setText("");
         defaultDisplay();
         textArea.setRows(lista.size()*2+1);
@@ -44,8 +45,12 @@ public class DisplayArray {
         for (PracownikBadawczoDydaktyczny naukowiec : lista) {
             textArea.append(naukowiec.getImie() + " " + naukowiec.getNazwisko() + ", " + naukowiec.getPesel() + ", " + naukowiec.getStanowisko() + ", Staż: " + naukowiec.getStazPracy() + " miesięcy, " + naukowiec.getPensja() + ", " + naukowiec.getWiek() + ", " + naukowiec.getJedzenie() + ", " + naukowiec.getPlec() + ", liczba publikacji: " + naukowiec.getLiczbaPublikacji() + "\n");
         }
+        JButton deleteButton = new JButton("Usuń wyszukanych naukowców");
+        mainFrame.getContentPane().add(deleteButton);
+        deleteButton.addActionListener(e -> Backend.Uczelnia.Main.getNaukowcy().removeAll(wyniki));
     }
     public static void displayStudent(ArrayList<Student> lista) {
+        ArrayList<Student> wyniki = new ArrayList(lista);
         textArea.setText("");
         defaultDisplay();
         textArea.setRows(lista.size()*2+1);
@@ -53,8 +58,12 @@ public class DisplayArray {
         for (Student student : lista) {
             textArea.append(student.getImie() + " " + student.getNazwisko() + ", " + student.getPesel() + ", " + student.getRokStudiow() + "r. wiek: " + student.getWiek() + ", " + student.getJedzenie() + ", " + student.getPlec()+ ", liczba kursów: " + student.getListaKursow().size() + "\n");
         }
+        JButton deleteButton = new JButton("Usuń wyszukanych studentów");
+        mainFrame.getContentPane().add(deleteButton);
+        deleteButton.addActionListener(e -> Backend.Uczelnia.Main.getStudenci().removeAll(wyniki));
     }
     public static void displayKurs(ArrayList<Kurs> lista) {
+        ArrayList<Kurs> wyniki = new ArrayList(lista);
         textArea.setText("");
         defaultDisplay();
         textArea.setRows(lista.size()*2+1);
@@ -62,6 +71,9 @@ public class DisplayArray {
         for (Kurs kurs : lista) {
             textArea.append(kurs.getNazwaKursu() + " " + kurs.getLiczbaECTS() + " ECTS, Prowadzący: " + kurs.getProwadzacy().getImie() + " " + kurs.getProwadzacy().getNazwisko() + "\n");
         }
+        JButton deleteButton = new JButton("Usuń wyszukanych kursów");
+        mainFrame.getContentPane().add(deleteButton);
+        deleteButton.addActionListener(e -> Backend.Uczelnia.Main.getKursy().removeAll(wyniki));
     }
     public static void displayAll() {
         textArea.setText("");
