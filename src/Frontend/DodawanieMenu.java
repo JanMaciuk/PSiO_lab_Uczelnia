@@ -16,7 +16,7 @@ public class DodawanieMenu {
         mainFrame.setVisible(true);
     }
     public static void dodajNaukowca() {
-        System.out.println("Dodawanie naukowca");
+
         defaultDisplay();
         JTextField imie = new JTextField("Imie");
         mainFrame.getContentPane().add(imie);
@@ -41,10 +41,10 @@ public class DodawanieMenu {
         JButton button = new JButton("Dodaj");
         mainFrame.getContentPane().add(button);
         button.addActionListener(e -> Backend.Uczelnia.Main.getNaukowcy().add(new Backend.Uczelnia.PracownikBadawczoDydaktyczny(stanowisko.getText(), Integer.parseInt(staz.getText()), Integer.parseInt(pensja.getText()), imie.getText(), nazwisko.getText(), pesel.getText(), Integer.parseInt(wiek.getText()), plec.getText(), jedzenie.getText(), Integer.parseInt(liczbaPublikacji.getText()))));
-
+        System.out.println("Dodawanie naukowca");
     }
     public static void dodajAdministratora() {
-        System.out.println("Dodawanie administratora");
+
         defaultDisplay();
         JTextField imie = new JTextField("Imie");
         mainFrame.getContentPane().add(imie);
@@ -69,9 +69,10 @@ public class DodawanieMenu {
         JButton button = new JButton("Dodaj");
         mainFrame.getContentPane().add(button);
         button.addActionListener(e -> Backend.Uczelnia.Main.getAdministratorzy().add(new Backend.Uczelnia.PracownikAdministracyjny(stanowisko.getText(), Integer.parseInt(staz.getText()), Integer.parseInt(pensja.getText()), imie.getText(), nazwisko.getText(), pesel.getText(), Integer.parseInt(wiek.getText()), plec.getText(), jedzenie.getText(),Integer.parseInt(liczbaNadgodzin.getText()))));
+        System.out.println("Dodawanie administratora");
     }
     public static void dodajStudenta() {
-        System.out.println("Dodawanie studenta");
+
         defaultDisplay();
         ArrayList<Backend.Uczelnia.Kurs> kursyStudenta = new ArrayList();
         mainFrame.getContentPane().setLayout(new GridLayout(15, 1));
@@ -108,12 +109,12 @@ public class DodawanieMenu {
         JButton dodajStudenta = new JButton("Dodaj studenta");
         mainFrame.getContentPane().add(dodajStudenta);
         dodajStudenta.addActionListener(e -> Backend.Uczelnia.Main.getStudenci().add(new Backend.Uczelnia.Student(Integer.parseInt(numerIndeksu.getText()), Integer.parseInt(rokStudiow.getText()), erasmus.isSelected(), pierwszyStopien.isSelected(), stacjonarne.isSelected(), imie.getText(), nazwisko.getText(), pesel.getText(), Integer.parseInt(wiek.getText()), plec.getText(), jedzenie.getText(), kursyStudenta)));
-
+        System.out.println("Dodawanie studenta");
 
 
     }
     public static void dodajKurs() {
-        System.out.println("Dodawanie kursu");
+
         defaultDisplay();
         JTextField nazwa = new JTextField("Nazwa");
         mainFrame.getContentPane().add(nazwa);
@@ -127,5 +128,6 @@ public class DodawanieMenu {
         JButton button = new JButton("Dodaj");
         mainFrame.getContentPane().add(button);
         button.addActionListener(e -> Backend.Uczelnia.Main.getKursy().add(new Backend.Uczelnia.Kurs(nazwa.getText(),Backend.Uczelnia.Main.getNaukowcy().get(Integer.parseInt(idProwadzacego.getText())),Integer.parseInt(ECTS.getText()))));
+        System.out.println("Dodawanie kursu");
     }
 }

@@ -2,11 +2,13 @@ package Frontend;
 
 import javax.swing.*;
 import java.awt.*;
+
+import Backend.Komparatory.*;
 import Backend.Uczelnia.*;
 
 public class MainWindow  {
-    public static int width = 300;
-    public static int height = 200;
+    public static int width = 400;
+    public static int height = 300;
 
     public static void main(String[] args) { //TODO: sortowanie
         Backend.Uczelnia.Main.deserializujWszystko();
@@ -18,15 +20,18 @@ public class MainWindow  {
 
         JButton button1 = new JButton("Dodawanie");
         JButton button2 = new JButton("Wyszukiwanie");
+        JButton button3 = new JButton("Sortowanie");
         JButton button4 = new JButton("Wyjdź");
 
-        mainFrame.getContentPane().setLayout(new GridLayout(3, 1));
+        mainFrame.getContentPane().setLayout(new GridLayout(2, 2));
         mainFrame.getContentPane().add(button1);
         mainFrame.getContentPane().add(button2);
+        mainFrame.getContentPane().add(button3);
         mainFrame.getContentPane().add(button4);
 
         button1.addActionListener(e -> DodawanieWindow());
         button2.addActionListener(e -> WyszukiwanieWindow());
+        button3.addActionListener(e -> SortowanieWindow());
         button4.addActionListener(e -> System.exit(1));
 
         mainFrame.setSize(width, height);
@@ -82,6 +87,47 @@ public class MainWindow  {
         button4.addActionListener(e -> WyszukiwanieMenu.wyszukajKurs());
         button5.addActionListener(e -> WyszukiwanieMenu.wyswietlWszystko());
 
+        mainFrame.setSize(width, height);
+        mainFrame.setVisible(true);
+    }
+    public static void SortowanieWindow() {
+
+        JFrame mainFrame = new JFrame("Sortowanie");
+        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JButton button1 = new JButton("Sortuj po nazwisku");
+        mainFrame.getContentPane().add(button1);
+        button1.addActionListener(e -> {
+            KomparatorNazwisko komparatorOsoby = new Backend.Komparatory.KomparatorNazwisko();
+            Backend.Uczelnia.Main.getNaukowcy().sort(komparatorOsoby);
+            Backend.Uczelnia.Main.getAdministratorzy().sort(komparatorOsoby);
+            Backend.Uczelnia.Main.getStudenci().sort(komparatorOsoby);
+        });
+
+        JButton button2 = new JButton("Sortuj po nazwisku i imieniu");
+        mainFrame.getContentPane().add(button2);
+        button2.addActionListener(e -> {
+            KomparatorNazwiskoImie komparatorOsoby = new Backend.Komparatory.KomparatorNazwiskoImie();
+            Backend.Uczelnia.Main.getNaukowcy().sort(komparatorOsoby);
+            Backend.Uczelnia.Main.getAdministratorzy().sort(komparatorOsoby);
+            Backend.Uczelnia.Main.getStudenci().sort(komparatorOsoby);
+        });
+
+        JButton button3 = new JButton("Sortuj po nazwisku i wieku");
+        mainFrame.getContentPane().add(button3);
+        button3.addActionListener(e -> {
+            KomparatorNazwiskoWiek komparatorOsoby = new Backend.Komparatory.KomparatorNazwiskoWiek();
+            Backend.Uczelnia.Main.getNaukowcy().sort(komparatorOsoby);
+            Backend.Uczelnia.Main.getAdministratorzy().sort(komparatorOsoby);
+            Backend.Uczelnia.Main.getStudenci().sort(komparatorOsoby);
+        });
+
+        JButton button4 = new JButton("Sortuj Kursy");
+        mainFrame.getContentPane().add(button4);
+        button4.addActionListener(e -> Backend.Uczelnia.Main.getKursy().sort(new Backend.Komparatory.KomparatorKursy()));
+
+
+        mainFrame.getContentPane().setLayout(new GridLayout(4, 1));
         mainFrame.setSize(width, height);
         mainFrame.setVisible(true);
     }
