@@ -56,7 +56,7 @@ public class DisplayArray {
         textArea.setRows(lista.size()*2+1);
         textArea.append("Żądana lista studentów:\n");
         for (Student student : lista) {
-            textArea.append(student.getImie() + " " + student.getNazwisko() + ", " + student.getPesel() + ", " + student.getRokStudiow() + "r. wiek: " + student.getWiek() + ", " + student.getJedzenie() + ", " + student.getPlec()+ ", liczba kursów: " + student.getListaKursow().size() + "\n");
+            textArea.append(student.getNumerIndeksu()+ " " + student.getImie() + " " + student.getNazwisko() + ", " + student.getPesel() + ", " + student.getRokStudiow() + "r. wiek: " + student.getWiek() + ", " + student.getJedzenie() + ", " + student.getPlec()+ ", liczba kursów: " + student.getListaKursow().size() + "\n");
         }
         JButton deleteButton = new JButton("Usuń wyszukanych studentów");
         mainFrame.getContentPane().add(deleteButton);
@@ -90,7 +90,7 @@ public class DisplayArray {
         }
         textArea.append("\nŻądana lista studentów:\n");
         for (Student student : Backend.Uczelnia.Main.getStudenci()) {
-            textArea.append(student.getImie() + " " + student.getNazwisko() + ", " + student.getPesel() + ", " + student.getRokStudiow() + "r. wiek: " + student.getWiek() + ", " + student.getJedzenie() + ", " + student.getPlec()+ ", liczba kursów: " + student.getListaKursow().size() + "\n");
+            textArea.append(student.getNumerIndeksu() + " " + student.getImie() + " " + student.getNazwisko() + ", " + student.getPesel() + ", " + student.getRokStudiow() + "r. wiek: " + student.getWiek() + ", " + student.getJedzenie() + ", " + student.getPlec()+ ", liczba kursów: " + student.getListaKursow().size() + "\n");
         }
         textArea.append("\nŻądana lista kursów:\n");
         for (Kurs kurs : Backend.Uczelnia.Main.getKursy()) {

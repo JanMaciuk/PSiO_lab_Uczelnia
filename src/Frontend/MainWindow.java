@@ -10,7 +10,7 @@ public class MainWindow  {
     public static int width = 400;
     public static int height = 300;
 
-    public static void main(String[] args) { //TODO: sortowanie
+    public static void main(String[] args) {
         Backend.Uczelnia.Main.deserializujWszystko();
         Thread onShutdown = new Thread(Main::serializujWszystko);
         Runtime.getRuntime().addShutdownHook(onShutdown);
@@ -126,8 +126,13 @@ public class MainWindow  {
         mainFrame.getContentPane().add(button4);
         button4.addActionListener(e -> Backend.Uczelnia.Main.getKursy().sort(new Backend.Komparatory.KomparatorKursy()));
 
+        JButton button5 = new JButton("Usuń duplikaty");
+        mainFrame.getContentPane().add(button5);
+        button5.addActionListener(e -> CheckDuplicates.removeDuplicatePeople());
 
-        mainFrame.getContentPane().setLayout(new GridLayout(4, 1));
+
+
+        mainFrame.getContentPane().setLayout(new GridLayout(5, 1));
         mainFrame.setSize(width, height);
         mainFrame.setVisible(true);
     }
