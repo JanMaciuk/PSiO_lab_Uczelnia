@@ -19,7 +19,7 @@ public class MainWindow  {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton button1 = new JButton("Dodawanie");
-        JButton button2 = new JButton("Wyszukiwanie");
+        JButton button2 = new JButton("Wyszukiwanie i Usuwanie");
         JButton button3 = new JButton("Sortowanie");
         JButton button4 = new JButton("Wyjdź");
 
